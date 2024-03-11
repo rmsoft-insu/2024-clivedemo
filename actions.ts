@@ -8,6 +8,7 @@ import { redirect } from "next/navigation";
 
 let username = "john";
 let isPro = true;
+let isBlocked = true;
 
 export const getSession = async () => {
   const session = await getIronSession<SessionData>(cookies(), sessionOptions);
@@ -15,6 +16,10 @@ export const getSession = async () => {
   if (!session.isLoggedIn) {
     session.isLoggedIn = defaultSession.isLoggedIn;
   }
+
+  // CHECK THE USER IN THE DB
+  // session.isBlocked = isBlocked;
+  // session.isPro = isPro;
 
   return session;
 };
