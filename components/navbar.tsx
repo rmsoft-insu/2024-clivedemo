@@ -4,7 +4,6 @@ import { getSession } from "@/actions";
 
 export const Navbar = async () => {
   const session = await getSession();
-  console.log(session.isLoggedIn);
 
   return (
     <nav>
