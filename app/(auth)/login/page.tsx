@@ -1,7 +1,9 @@
+import { LoginForm } from "./_components/form/main";
+
 const LoginPage = () => {
   return (
     <>
-      <div>로그인 페이지</div>
+      <LoginForm />
     </>
   );
 };
