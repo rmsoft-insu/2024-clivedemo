@@ -53,6 +53,11 @@ export const LoginForm = () => {
     localStorage.clear();
   };
 
+  const tokenTest = async () => {
+    const response = await axios.get(`${process.env.ADMIN}/role/list`);
+    console.log("test", response);
+  };
+
   return (
     <>
       <div>Login Form</div>
@@ -90,6 +95,7 @@ export const LoginForm = () => {
       <div className="flex flex-col gap-2 w-[120px]">
         <Button onClick={onList}>불러오기</Button>
         <Button onClick={delStorage}>Rest Storage</Button>
+        <Button onClick={tokenTest}>토큰 테스트</Button>
       </div>
     </>
   );
