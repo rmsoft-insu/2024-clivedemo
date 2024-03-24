@@ -13,11 +13,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import https from "https";
 
 const FormSchema = z.object({
   userId: z.string(),
   password: z.string(),
 });
+
+axios.defaults.httpsAgent = new https.Agent({
+  rejectUnauthorized:false
+})
 
 export const LoginForm = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
