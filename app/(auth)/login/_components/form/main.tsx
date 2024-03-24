@@ -20,9 +20,11 @@ const FormSchema = z.object({
   password: z.string(),
 });
 
-axios.defaults.httpsAgent = new https.Agent({
-  rejectUnauthorized:false
-})
+const httpAxios = axios.create({
+  httpsAgent: new https.Agent({
+    rejectUnauthorized: false,
+  }),
+});
 
 export const LoginForm = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -35,7 +37,7 @@ export const LoginForm = () => {
 
   const onClick = async (data: z.infer<typeof FormSchema>) => {
     console.log(":data", data);
-    const response = await axios.post(
+    const response = await httpAxios.post(
       `${process.env.ADMIN}/auth/login`,
       {
         id: data.userId,
