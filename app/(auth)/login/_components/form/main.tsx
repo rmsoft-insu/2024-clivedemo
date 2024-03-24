@@ -22,6 +22,7 @@ const FormSchema = z.object({
 
 const httpAxios = axios.create({
   httpsAgent: new https.Agent({
+    requestCert: true,
     rejectUnauthorized: false,
   }),
 });
@@ -52,7 +53,7 @@ export const LoginForm = () => {
   };
 
   const onList = async () => {
-    const response = await axios.get(`${process.env.ADMIN}/menu/list`);
+    const response = await httpAxios.get(`${process.env.ADMIN}/menu/list`);
     console.log("list", response);
   };
 
