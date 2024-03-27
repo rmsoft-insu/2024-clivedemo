@@ -46,3 +46,14 @@ export async function authenticate(_currentState: unknown, formData: FormData) {
     throw error;
   }
 }
+
+export async function logout() {
+  const cookieStore = cookies().get("Refresh_Token");
+  console.log(cookieStore);
+
+  axios.post("http://localhost:4000/api/logout", null, {
+    headers: {
+      Cookie: "cookie",
+    },
+  });
+}

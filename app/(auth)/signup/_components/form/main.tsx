@@ -53,13 +53,17 @@ export const SignupMain = () => {
     const json = response.json();
     console.log("json", json); */
     axios
-      .post("http://localhost:4000/api/login", {
+      .post("/api/v1/login", {
         email: "insu",
         password: "1234",
       })
       .then((res) => {
         return console.log("res", res);
       });
+  };
+
+  const onLogout = () => {
+    axios.post("/api/v1/logout");
   };
 
   return (
@@ -96,6 +100,7 @@ export const SignupMain = () => {
         </form>
       </Form>
       <Button onClick={onLogin}>로그인</Button>
+      <Button onClick={onLogout}>로그아웃</Button>
     </>
   );
 };

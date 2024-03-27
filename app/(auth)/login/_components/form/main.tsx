@@ -31,7 +31,7 @@ export const LoginForm = () => {
   const onClick = async (data: z.infer<typeof FormSchema>) => {
     console.log(":data", data);
     const response = await axios.post(
-      `${process.env.ADMIN}/auth/login`,
+      `/api/auth/login`,
       {
         id: data.userId,
         pwd: data.password,

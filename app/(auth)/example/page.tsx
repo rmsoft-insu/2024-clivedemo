@@ -1,6 +1,8 @@
 "use client";
 
-import { authenticate } from "@/lib/actions";
+import { Button } from "@/components/ui/button";
+import { authenticate, logout } from "@/lib/actions";
+import axios from "axios";
 import { useFormState, useFormStatus } from "react-dom";
 
 function LoginButton() {
@@ -16,6 +18,7 @@ function LoginButton() {
 
 const ExamplePage = () => {
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
+  const [logoutError, logoutDispatch] = useFormState(logout, undefined);
 
   return (
     <>
@@ -24,6 +27,7 @@ const ExamplePage = () => {
         <input type="text" name="password" placeholder="password" required />
         <LoginButton />
       </form>
+      <Button formAction={logoutDispatch}>Logout</Button>
     </>
   );
 };
