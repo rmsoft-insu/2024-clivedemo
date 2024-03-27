@@ -5,6 +5,25 @@ const nextConfig = {
     ADMIN: process.env.NEXT_PUBLIC_ADMIN,
     PROJECT: process.env.NEXT_PUBLIC_PROJECT,
   },
+  async rewrites() {
+    return [
+      {
+        basePath: false,
+        source: "/api/v1/login",
+        destination: `http://localhost:4000/api/login`,
+      },
+      {
+        basePath: false,
+        source: "/api/v1/logout",
+        destination: `http://localhost:4000/api/logout`,
+      },
+      {
+        basePath: false,
+        source: "/api/v2/:path*",
+        destination: `${process.env.NEXT_PUBLIC_ADMIN}/:path*`,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

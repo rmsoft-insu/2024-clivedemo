@@ -38,14 +38,10 @@ export const LoginForm = () => {
 
   const onClick = async (data: z.infer<typeof FormSchema>) => {
     console.log(":data", data);
-    const response = await httpAxios.post(
-      `${process.env.ADMIN}/auth/login`,
-      {
-        id: data.userId,
-        pwd: data.password,
-      },
-      { withCredentials: true }
-    );
+    const response = await httpAxios.post(`/api/v2/auth/login`, {
+      id: data.userId,
+      pwd: data.password,
+    });
     console.log("axios res", response);
 
     response.data.code === 200 &&
