@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { Tilt_Neon, Reem_Kufi_Fun } from "next/font/google";
 import { Navbar } from "@/components/navbar";
 import "./globals.css";
+import QueryProviders from "@/providers/query-provider";
 
 const pretendard = localFont({
   src: "../public/font/PretendardVariable.woff2",
@@ -32,10 +33,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={pretendard.className}>
       <body className={`${kufi.variable}`}>
-        <div className="container">
-          <Navbar />
-          <div className="content">{children}</div>
-        </div>
+        <QueryProviders>
+          <div className="container">
+            <Navbar />
+            <div className="content">{children}</div>
+          </div>
+        </QueryProviders>
       </body>
     </html>
   );
