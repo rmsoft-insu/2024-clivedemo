@@ -6,7 +6,7 @@ export const Navbar = async () => {
   const session = await getSession();
 
   return (
-    <nav>
+    <nav className="font-neon">
       <Link href="/">Homepage</Link>
       <Link href="/premium">Premium</Link>
       <Link href="/profile">Profile</Link>

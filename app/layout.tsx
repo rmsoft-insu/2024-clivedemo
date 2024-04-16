@@ -1,9 +1,23 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import localFont from "next/font/local";
+import { Tilt_Neon, Reem_Kufi_Fun } from "next/font/google";
 import { Navbar } from "@/components/navbar";
+import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const pretendard = localFont({
+  src: "../public/font/PretendardVariable.woff2",
+});
+
+const neon = Tilt_Neon({
+  subsets: ["latin"],
+  variable: "--font-tilt-neonss",
+  display: "swap",
+});
+const kufi = Reem_Kufi_Fun({
+  subsets: ["latin"],
+  variable: "--font-kufi-funss",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,8 +30,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className={pretendard.className}>
+      <body className={`${kufi.variable}`}>
         <div className="container">
           <Navbar />
           <div className="content">{children}</div>
