@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/work", "destination": "https://studio-sandbox.vercel.app/" }
+  ]
+}

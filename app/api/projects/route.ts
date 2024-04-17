@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: any, response: any) {
-  const cursor = parseInt(request.query.cursor || 0);
+export async function GET(request: NextRequest, response: NextResponse) {
+  const cursor = parseInt(request.nextUrl.searchParams.get("cursor") ?? "0");
   const pageSize = 5;
+
+  console.log("cursor", cursor);
 
   const data = Array(pageSize)
     .fill(0)
@@ -16,5 +18,10 @@ export async function GET(request: any, response: any) {
   const nextId = cursor < 10 ? data[data.length - 1].id + 1 : null;
   const previousId = cursor > -10 ? data[0].id - pageSize : null;
 
-  setTimeout(() => response.json({ data, nextId, previousId }), 1000);
+  return new NextResponse(JSON.stringify({ data, nextId, previousId }), {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 }
