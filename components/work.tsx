@@ -14,6 +14,7 @@ export const WorkButton = () => {
             name: "insu",
             id: "shine",
             code: "123code",
+            test: "test",
           },
         }}
       >
