@@ -27,8 +27,8 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: "/work",
-        destination: "https://studio-sandbox.vercel.app",
+        source: "/work/*",
+        destination: "https://studio-sandbox.vercel.app/*",
         permanent: true,
       },
     ];
