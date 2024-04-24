@@ -28,7 +28,7 @@ const nextConfig = {
     return [
       {
         source: "/work/:path*",
-        destination: "https://studio-sandbox.vercel.app/path*",
+        destination: "https://studio-sandbox.vercel.app/:path*",
         permanent: true,
       },
     ];
